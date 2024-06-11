@@ -1,0 +1,18 @@
+<section id="list-users">
+
+</section>
+
+<script>
+  window.addEventListener('DOMContentLoaded', async () => {
+    const users = await fetch('/users').then((data) => data.json())
+    console.log(users)
+    const section = document.querySelector('#list-users')
+    users.forEach(user => {
+      section.innerHTML += "" +
+        "<article>" +
+        `<h1>Name: ${user.name}</h1>` +
+        `"<p>Email: ${user.email}</p>` +
+        "</article>"
+    });
+  })  
+</script>

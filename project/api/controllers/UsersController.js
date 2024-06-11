@@ -8,7 +8,7 @@
 module.exports = {
   find: async (req, res) => {
     try {
-        const users = await User.find();
+        const users = User.find();
         return res.json(users)
     } catch (error) {
         return res.serverError(error)

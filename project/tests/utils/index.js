@@ -3,16 +3,19 @@ const USER = {
   'email': 'yan@gmail.com'
 };
 
-const RESPONSE = {
-  json: function (data) {
-    data;
-  },
-  serverError: function(data) {
-    return {"error": data}
-  }
-};
-
 module.exports = {
   USER,
-  RESPONSE
+  RESPONSE: {
+    json: function (data) {
+      data;
+    },
+    serverError: function(data) {
+      this.statusCode = 500
+      return {"error": data}
+    },
+    status: function(code) {
+      this.statusCode = code;
+      return this;
+    }
+  }
 };

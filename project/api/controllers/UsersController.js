@@ -17,8 +17,8 @@ module.exports = {
 
   create: async (req, res) => {
     try {
-        const user = await User.create(req.body).fetch();
-        return res.json(user)
+        const user = await User.create(req.body);
+        return res.status(200).json({success: true})
     } catch (error) {
         return res.serverError(error)
     }

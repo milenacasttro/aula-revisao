@@ -19,9 +19,9 @@ module.exports = {
     try {
         const user = await User.create(req.body).fetch();
         return res.json(user)
-    } catch {
+    } catch (error) {
         return res.serverError(error)
     }
   }
-};
+}
 

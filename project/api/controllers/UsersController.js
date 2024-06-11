@@ -20,6 +20,7 @@ module.exports = {
         const user = await User.create(req.body);
         return res.status(200).json({success: true})
     } catch (error) {
+        console.log(error)
         return res.serverError(error)
     }
   }

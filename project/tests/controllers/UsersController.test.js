@@ -5,18 +5,18 @@ const sinon = require('sinon');
 
 describe('UsersController', () => {
   it('Deve criar o usuário com sucesso', async () => {
-    const createStub = sinon.stub(User, 'create').resolves();
-  
+    const substituicao1 =  sinon.stub(User, 'create').resolves(USER);
+    // const substituicao2 =  sinon.stub(User.create, 'fetch').resolves(USER);
+    
+
     const req = {
       body: USER,
     };
 
-    const resultado = await controller.create(req, RESPONSE);
+    await controller.create(req, RESPONSE);
 
+    assert.strictEqual(substituicao1.calledOnceWith({name: USER.name, email: USER.email}), true);
     assert.strictEqual(RESPONSE.statusCode, 200);
-    assert.strictEqual(createStub.calledOnce, true);
-    assert.deepStrictEqual(resultado, {"success": true});
-
-    createStub.restore();
+    assert.deepStrictEqual(RESPONSE.body, {success: true});
   });
 });

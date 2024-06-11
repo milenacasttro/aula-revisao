@@ -7,7 +7,7 @@ var supertest = require('supertest');
 describe('UsersController', () => {
   it('Deve criar o usuário com sucesso', async () => {
     const substituicao1 =  sinon.stub(User, 'create').resolves(USER);
- 
+    
     const req = {
       body: USER,
     };
